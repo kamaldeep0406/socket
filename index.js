@@ -1,10 +1,13 @@
 import { Server } from 'socket.io';
-
+import cors from 'cors'
 const io = new Server(9000, {
     cors: {
-        origin: 'http://localhost:3000',
-    }, 
-})
+      origin: "*",  // Allow any origin
+      methods: ["GET", "POST"],  // Allow these HTTP methods
+      allowedHeaders: ["my-custom-header"],  // Allow these headers (if needed)
+      credentials: true  // Allow credentials (cookies, authorization headers, etc.)
+    }
+  });
 
 
 let users = [];
